@@ -19,6 +19,6 @@ def register(request):
             form.save()
             # return redirect('')
     
-    context = {'form' : form}
+    context = {'form' : form} # this helps us to render username,password from createUserForm to our template register.html
     return render(request, 'webapp/register.html', context=context)
     
