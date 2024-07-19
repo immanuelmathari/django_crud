@@ -1,0 +1,16 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+    <div class='container bg-light shadow-md p-5'>
+        <h3>Create your account</h3>
+        <h5>Start managing your clients today </h5>    
+        <hr>
+        <br>
+
+        {% comment %} the autocomplete is to avoid getting data from past forms {% endcomment %}
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            {{form.as_p}}
+        </form>
+    </div>
+{% endblock %}
