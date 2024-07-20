@@ -42,6 +42,9 @@
             <td>{{record.province}}</td>
             <td>{{record.country}}</td>
             <td>{{record.creation_date}}</td>
+
+            <td><a href="{% url 'record' record.id %}">Click Me</a></td>
+
         </tr>
         {%endfor%}
         {% endif %}

@@ -1,0 +1,21 @@
+{% extends 'webapp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<body>
+<div class="container bg-light shadow-md p-5 form-layout"> 
+    <h3>Update a record</h3>
+    <h6>Update your records down below</h6>
+    <hr>
+        <br>
+
+        {% comment %} the autocomplete is to avoid getting data from past forms {% endcomment %}
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            {{form4|crispy}}
+            <br>
+            <button type="submit" class="btn btn-primary w-100 btn-block p-2y">Update record</button>
+        </form>
+
+</div>
+</body>
+{% endblock %}

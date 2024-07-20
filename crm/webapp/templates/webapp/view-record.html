@@ -1,0 +1,22 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+<!-- We want to add in a card -->
+ <div class='card'>
+    <strong>
+        {{record.last_name|upper}}
+        {{record.first_name}}
+    </strong>
+    <div class='card-body'>
+        <p><strong>ID: </strong> {{record.id}} </p>
+        <p><strong>Email: </strong> {{record.email}} </p>
+        <p><strong>Phone: </strong> {{record.phone}} </p>
+        <p><strong>Address: </strong> {{record.address}} </p>
+        <p><strong>City: </strong> {{record.city}} </p>
+        <p><strong>Province: </strong> {{record.province}} </p>
+        <p><strong>Country: </strong> {{record.country}} </p>
+        <p><strong>Creation Date: </strong> {{record.creation_date}} </p>
+
+    </div>
+ </div>
+{% endblock %}

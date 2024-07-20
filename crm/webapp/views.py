@@ -70,6 +70,27 @@ def create_record(request):
     context = {'form3' : form}
     return render(request, 'webapp/create-record.html', context=context)
 
+@login_required(login_url='my-login')
+def update_record(request, pk):
+    record = Record.objects.get(id=pk)
+    form = UpdateRecordForm(instance=record) # we want to get a particular user record
+    if request.method == "POST":
+        form = UpdateRecordForm(request.POST, instance=record)
+        if form.is_valid:
+            form.save()
+            return redirect('dashboard')
+    context = {'form4':form}
+    
+    return render(request, 'webapp/update-record.html', context=context)
+
+# Read a record
+@login_required(login_url='my-login')
+def singular_record(request, pk):
+    record = Record.objects.get(id=pk)
+    context = {'record': record}
+    return render(request, 'webapp/view-record.html', context=context)
+
+
 # - User Logout
 def user_logout(request):
     auth.logout(request)

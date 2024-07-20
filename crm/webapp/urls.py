@@ -13,4 +13,9 @@ urlpatterns = [
     path('user-logout', views.user_logout, name='user-logout'),
     
     path('create-record', views.create_record, name="create-record"),
+    
+    # we want to make this link dynamic
+    path('update-record/<intLpk>',views.update_record, name=''),
+    
+    path('record/<int:pk>', views.singular_record, name="record"),
 ]
