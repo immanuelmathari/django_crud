@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django import forms #for widgets text input, email input
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms.widgets import PasswordInput, TextInput
+from . models import Record
 
 class CreateUserForm(UserCreationForm):
     class Meta:
@@ -15,3 +16,19 @@ class CreateUserForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=TextInput())
     password = forms.CharField(widget=PasswordInput())
+
+# A form to add in records
+# Create
+class CreateRecordForm(forms.ModelForm):
+    class Meta:
+        # import the record model
+        model = Record
+        # has to be in correct order
+        fields = ['first_name', 'last_name', 'email', 'phone', 'address', 'city', 'province', 'country']
+    
+    
+# Update
+class UpdateRecordForm(forms.ModelForm):
+    class Meta:
+        model = Record
+        fields = ['first_name', 'last_name', 'email', 'phone', 'address', 'city', 'province', 'country']

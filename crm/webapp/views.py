@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import CreateUserForm, LoginForm
 # to logout and authenticate
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 # to make sure only authenticated users access restricted pages
 from django.contrib.auth.decorators import login_required
 from . models import Record
+from . forms import CreateRecordForm, UpdateRecordForm, CreateUserForm, LoginForm
 
 # Create your views here.
 
@@ -53,6 +53,22 @@ def dashboard(request):
     my_records = Record.objects.all()
     context = {'records' : my_records}
     return render(request, 'webapp/dashboard.html', context=context)
+
+# - Create a record
+@login_required(login_url='my+login')
+def create_record(request):
+    # # implement this
+    # pass
+    form = CreateRecordForm()
+    
+    if request.method == 'POST':
+        form = CreateRecordForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard")
+    # to take data to the view
+    context = {'form3' : form}
+    return render(request, 'webapp/create-record.html', context=context)
 
 # - User Logout
 def user_logout(request):
