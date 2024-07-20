@@ -3,10 +3,11 @@
 {% block content %}
 <!-- We want to add in a card -->
  <div class='card'>
-    <strong>
+    <strong> Mr. 
         {{record.last_name|upper}}
         {{record.first_name}}
     </strong>
+    <hr>
     <div class='card-body'>
         <p><strong>ID: </strong> {{record.id}} </p>
         <p><strong>Email: </strong> {{record.email}} </p>
@@ -18,5 +19,16 @@
         <p><strong>Creation Date: </strong> {{record.creation_date}} </p>
 
     </div>
+
+    
  </div>
+ 
+ <br>
+
+ <a href="{% url 'dashboard' %}" class="btn btn-secondary">Return</a>
+ &nbsp;
+ <a href="{% url 'update-record' record.id %}" class="btn btn-info">Update Record</a>
+ &nbsp;
+ <a href="{% url '' %}" class="btn btn-danger">Delete</a>
+ &nbsp;
 {% endblock %}
