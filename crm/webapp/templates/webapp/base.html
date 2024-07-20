@@ -20,11 +20,18 @@
         {% include 'webapp/navbar.html'%}
         <div class="container">
             <br>
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <p id="message-timer" class="alert alert-success float-center text-center message-text">
+                        <i class="fa fa-check" aria-hidden="true"></i> &nbsp; {{message}}
+                    </p>
+                {% endif %}
+            {% endfor %}
             {% block content %}
 
             {% endblock %}
         </div>
-        <script src="{% static "js/app.js" %}}"></script>
+        <script src="{% static 'js/app.js' %}"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         
         

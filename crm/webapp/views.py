@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from . models import Record
 from . forms import CreateRecordForm, UpdateRecordForm, CreateUserForm, LoginForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -23,6 +24,7 @@ def register(request):
         
         if form.is_valid():
             form.save()
+            messages.success(request, "Account created successfully!")
             return redirect('my-login')
     
     context = {'form' : form} # this helps us to render username,password from createUserForm to our template register.html. its called a context dictionary in django
@@ -42,6 +44,7 @@ def my_login(request):
             
             if user is not None:
                 auth.login(request,user)
+                messages.success(request, "Logged in!")
                 return redirect('dashboard')
     
     context = {'form2': form} #take data to login.html
@@ -65,6 +68,7 @@ def create_record(request):
         form = CreateRecordForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Your record was created!")
             return redirect("dashboard")
     # to take data to the view
     context = {'form3' : form}
@@ -78,6 +82,7 @@ def update_record(request, pk):
         form = UpdateRecordForm(request.POST, instance=record)
         if form.is_valid:
             form.save()
+            messages.success(request, "Your record was updated!")
             return redirect('dashboard')
     context = {'form4':form}
     
@@ -95,11 +100,12 @@ def singular_record(request, pk):
 def delete_record(request, pk):
     record = Record.objects.get(id=pk)
     record.delete()
+    messages.success(request, "Your record was deleted!")
     return redirect('dashboard')
 
 
 # - User Logout
 def user_logout(request):
     auth.logout(request)
-    
+    messages.success(request, "GoodBye < />")
     return redirect("my-login")
