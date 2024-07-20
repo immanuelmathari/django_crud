@@ -13,7 +13,10 @@
             {% csrf_token %}
             {{form4|crispy}}
             <br>
-            <button type="submit" class="btn btn-primary w-100 btn-block p-2y">Update record</button>
+            <button type="submit" class="btn btn-primary w-100 btn-block p-2y">Update record  &nbsp; <i class="fa fa-plus" /> </button>
+            &nbsp;
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary">Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
         </form>
 
 </div>

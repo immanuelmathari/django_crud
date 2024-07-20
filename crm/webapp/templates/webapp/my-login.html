@@ -12,9 +12,13 @@
         {% comment %} the autocomplete is to avoid getting data from past forms {% endcomment %}
         <form method="POST" autocomplete="off">
             {% csrf_token %}
-            {{form2|crispy}}
+            {% comment %} {{form2|crispy}} {% endcomment %}
+            {{form2.username|as_crispy_field}}
             <br>
-            <button type="submit" class="btn btn-primar w-100 btn-block p-2y">Login</button>
+            {{form2.password|as_crispy_field}}
+            <br>
+            <button type="submit" class="btn btn-primary w-100 btn-block p-2y">Login &nbsp; <i class="fa fa-key" aria-hidden="true"></i>
+            </button>
         </form>
         <br>
         <div class="text-center">

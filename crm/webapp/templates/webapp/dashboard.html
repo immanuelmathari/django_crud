@@ -6,7 +6,8 @@
 
 <hr>
 
-<a class='btn btn-outline-primary btn-sm' href="{%url 'create-record' %}" >Create a new record</a>
+<a class='btn btn-outline-primary btn-sm' href="{%url 'create-record' %}" >Create a new record &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+</a>
 
 <hr>
 
@@ -43,7 +44,8 @@
             <td>{{record.country}}</td>
             <td>{{record.creation_date}}</td>
 
-            <td><a href="{% url 'record' record.id %}">Click Me</a></td>
+            <td><a href="{% url 'record' record.id %}" class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>
+            </a></td>
 
         </tr>
         {%endfor%}

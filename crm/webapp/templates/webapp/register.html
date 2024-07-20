@@ -13,9 +13,17 @@
         {% comment %} the autocomplete is to avoid getting data from past forms {% endcomment %}
         <form method="POST" autocomplete="off">
             {% csrf_token %}
-            {{form|crispy}}
+            <!--The problem about this is that there is no spaces between the inputs-->
+            {% comment %} {{form|crispy}}  {% endcomment %}
+            {{form.username|as_crispy_field}}
             <br>
-            <button type="submit" class="btn btn-primar w-100 btn-block p-2y">Create account</button>
+            {{form.password1|as_crispy_field}}
+            <br>
+            {{form.password2|as_crispy_field}}
+            <br>
+
+            <button type="submit" class="btn btn-primar w-100 btn-block p-2y">Create account &nbsp; <i class="fa fa-user" aria-hidden="true"></i>
+            </button>
         </form>
         <br>
         <div class="text-center">
