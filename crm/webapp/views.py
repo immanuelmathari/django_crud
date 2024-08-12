@@ -58,7 +58,7 @@ def dashboard(request):
     return render(request, 'webapp/dashboard.html', context=context)
 
 # - Create a record
-@login_required(login_url='my+login')
+@login_required(login_url='my-login')
 def create_record(request):
     # # implement this
     # pass
