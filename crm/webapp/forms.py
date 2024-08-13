@@ -7,6 +7,7 @@ from . models import Record
 
 class CreateUserForm(UserCreationForm):
     class Meta:
+        # this one comes from django by default
         model = User
         # the second one is for confirmation
         fields = ['username', 'password1', 'password2'] 
@@ -18,6 +19,7 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(widget=PasswordInput())
 
 # A form to add in records
+# note how we use the model we had created
 # Create
 class CreateRecordForm(forms.ModelForm):
     class Meta:
