@@ -20,6 +20,7 @@
         {% include 'webapp/navbar.html'%}
         <div class="container">
             <br>
+            {% comment %} this one comes later on after you have set the message response {% endcomment %}
             {% for message in messages %}
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
                     <p id="message-timer" class="alert alert-success float-center text-center message-text">
