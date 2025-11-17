@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 # to logout and authenticate
-from django.contrib.auth.models import auth
-from django.contrib.auth import authenticate
+from django.contrib.auth.models import auth  #to logout
+from django.contrib.auth import authenticate #to login
 # to make sure only authenticated users access restricted pages
 from django.contrib.auth.decorators import login_required
 from . models import Record
@@ -14,7 +14,7 @@ from django.contrib import messages
 def home(request):
     # return HttpResponse("Hello world")
     return render(request, 'webapp/index.html') #you dont need to reference template. django knows where it is
-
+ 
 
 # Register a user
 def register(request):
@@ -34,7 +34,7 @@ def register(request):
 def my_login(request):
     form = LoginForm()
     if request.method == "POST":
-        form = LoginForm(request, data=request.POST)
+        form = LoginForm(request, data=request.POST) #we send this data based on the loginform
         if form.is_valid():
             username = request.POST.get('username')
             password = request.POST.get('password')
@@ -47,8 +47,16 @@ def my_login(request):
                 messages.success(request, "Logged in!")
                 return redirect('dashboard')
     
-    context = {'form2': form} #take data to login.html
+    context = {'form2': form} #take data to login.html . its like the data we want to take to the form
     return render(request, 'webapp/my-login.html', context=context)
+
+
+# - User Logout
+def user_logout(request):
+    auth.logout(request)
+    messages.success(request, "GoodBye < />")
+    return redirect("my-login")
+
 
 # - Dashboard view
 @login_required(login_url='my-login') # ensures that only authorized users access dashboard
@@ -103,9 +111,3 @@ def delete_record(request, pk):
     messages.success(request, "Your record was deleted!")
     return redirect('dashboard')
 
-
-# - User Logout
-def user_logout(request):
-    auth.logout(request)
-    messages.success(request, "GoodBye < />")
-    return redirect("my-login")

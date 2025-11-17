@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms #for widgets text input, email input
 from django.contrib.auth.forms import AuthenticationForm
+# These two comes from the forms earlier requested as the values the from django import forms
 from django.forms.widgets import PasswordInput, TextInput
 from . models import Record
 

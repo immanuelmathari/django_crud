@@ -16,7 +16,7 @@
             {% csrf_token %}
             <!--The problem about this is that there is no spaces between the inputs-->
             {% comment %} {{form.as_p}} # initial {% endcomment %} 
-            {% comment %} below is how to use crispy in the first way {% endcomment %}
+            {% comment %} below is how to use crispy in one way or the one below it {% endcomment %}
             {% comment %} {{form|crispy}}  {% endcomment %}
             {{form.username|as_crispy_field}}
             <br>
