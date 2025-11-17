@@ -13,7 +13,7 @@ from django.contrib import messages
 
 def home(request):
     # return HttpResponse("Hello world")
-    return render(request, 'webapp/index.html')
+    return render(request, 'webapp/index.html') #you dont need to reference template. django knows where it is
 
 
 # Register a user
